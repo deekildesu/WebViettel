@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QL_PRODUCTSModelStoreContainer" CdmEntityContainer="QL_PRODUCTSEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QL_PRODUCTSModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Category">
+      <EntityTypeMapping TypeName="QL_PRODUCTSModel.TB_Category">
+        <MappingFragment StoreEntitySet="TB_Category">
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="Loaihang" ColumnName="Loaihang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CTDH">
+      <EntityTypeMapping TypeName="QL_PRODUCTSModel.TB_CTDH">
+        <MappingFragment StoreEntitySet="TB_CTDH">
+          <ScalarProperty Name="MACTDH" ColumnName="MACTDH" />
+          <ScalarProperty Name="MA_GD" ColumnName="MA_GD" />
+          <ScalarProperty Name="MA_SP" ColumnName="MA_SP" />
+          <ScalarProperty Name="SO_LUONG" ColumnName="SO_LUONG" />
+          <ScalarProperty Name="DON_GIA" ColumnName="DON_GIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DONDATHANG">
+      <EntityTypeMapping TypeName="QL_PRODUCTSModel.TB_DONDATHANG">
+        <MappingFragment StoreEntitySet="TB_DONDATHANG">
+          <ScalarProperty Name="MADON" ColumnName="MADON" />
+          <ScalarProperty Name="TEN_KH" ColumnName="TEN_KH" />
+          <ScalarProperty Name="USER_PHONE" ColumnName="USER_PHONE" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+          <ScalarProperty Name="MESSEAGE" ColumnName="MESSEAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SanPham">
+      <EntityTypeMapping TypeName="QL_PRODUCTSModel.TB_SanPham">
+        <MappingFragment StoreEntitySet="TB_SanPham">
+          <ScalarProperty Name="MA_SPHAM" ColumnName="MA_SPHAM" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="Ten_SP" ColumnName="Ten_SP" />
+          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+          <ScalarProperty Name="DT_DEN" ColumnName="DT_DEN" />
+          <ScalarProperty Name="DT_PIN" ColumnName="DT_PIN" />
+          <ScalarProperty Name="CONG_SUAT_DEN" ColumnName="CONG_SUAT_DEN" />
+          <ScalarProperty Name="SL_CHIPLEAD" ColumnName="SL_CHIPLEAD" />
+          <ScalarProperty Name="CONG_SUAT_PIN" ColumnName="CONG_SUAT_PIN" />
+          <ScalarProperty Name="DUNG_LUONG_PIN" ColumnName="DUNG_LUONG_PIN" />
+          <ScalarProperty Name="LIGHT_RANGE" ColumnName="LIGHT_RANGE" />
+          <ScalarProperty Name="LIGHT_TIME" ColumnName="LIGHT_TIME" />
+          <ScalarProperty Name="PRIDE" ColumnName="PRIDE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_GUESTS">
+      <EntityTypeMapping TypeName="QL_PRODUCTSModel.TB_GUESTS">
+        <MappingFragment StoreEntitySet="TB_GUESTS">
+          <ScalarProperty Name="TEN_KH" ColumnName="TEN_KH" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

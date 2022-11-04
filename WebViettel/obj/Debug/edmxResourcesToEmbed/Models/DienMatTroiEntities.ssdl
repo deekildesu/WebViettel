@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_PRODUCTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TB_Category">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Loaihang" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_CTDH">
+    <Key>
+      <PropertyRef Name="MACTDH" />
+      <PropertyRef Name="MA_SP" />
+    </Key>
+    <Property Name="MACTDH" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MA_GD" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MA_SP" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SO_LUONG" Type="int" Nullable="false" />
+    <Property Name="DON_GIA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_DONDATHANG">
+    <Key>
+      <PropertyRef Name="MADON" />
+    </Key>
+    <Property Name="MADON" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="TEN_KH" Type="nvarchar" MaxLength="50" />
+    <Property Name="USER_PHONE" Type="nvarchar" MaxLength="50" />
+    <Property Name="AMOUNT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MESSEAGE" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QL_PRODUCTS.dbo.TB_GUESTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TB_GUESTS">
+    <Key>
+      <PropertyRef Name="TEN_KH" />
+      <PropertyRef Name="DIACHI" />
+      <PropertyRef Name="NOTE" />
+    </Key>
+    <Property Name="TEN_KH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NOTE" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_SanPham">
+    <Key>
+      <PropertyRef Name="MA_SPHAM" />
+    </Key>
+    <Property Name="MA_SPHAM" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ten_SP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hinh" Type="varchar" MaxLength="50" />
+    <Property Name="DT_DEN" Type="nvarchar" MaxLength="50" />
+    <Property Name="DT_PIN" Type="nvarchar" MaxLength="50" />
+    <Property Name="CONG_SUAT_DEN" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SL_CHIPLEAD" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CONG_SUAT_PIN" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DUNG_LUONG_PIN" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="LIGHT_RANGE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LIGHT_TIME" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PRIDE" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PK_CTDH_GIAODICH">
+    <End Role="TB_DONDATHANG" Type="Self.TB_DONDATHANG" Multiplicity="1" />
+    <End Role="TB_CTDH" Type="Self.TB_CTDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_DONDATHANG">
+        <PropertyRef Name="MADON" />
+      </Principal>
+      <Dependent Role="TB_CTDH">
+        <PropertyRef Name="MA_GD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CTDH_SanPham">
+    <End Role="TB_SanPham" Type="Self.TB_SanPham" Multiplicity="1" />
+    <End Role="TB_CTDH" Type="Self.TB_CTDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_SanPham">
+        <PropertyRef Name="MA_SPHAM" />
+      </Principal>
+      <Dependent Role="TB_CTDH">
+        <PropertyRef Name="MA_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_SanPham_Category">
+    <End Role="TB_Category" Type="Self.TB_Category" Multiplicity="1" />
+    <End Role="TB_SanPham" Type="Self.TB_SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Category">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="TB_SanPham">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_PRODUCTSModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_Category" EntityType="Self.TB_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_CTDH" EntityType="Self.TB_CTDH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_DONDATHANG" EntityType="Self.TB_DONDATHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_SanPham" EntityType="Self.TB_SanPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_GUESTS" EntityType="Self.TB_GUESTS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TB_GUESTS].[TEN_KH] AS [TEN_KH], 
+    [TB_GUESTS].[EMAIL] AS [EMAIL], 
+    [TB_GUESTS].[DIACHI] AS [DIACHI], 
+    [TB_GUESTS].[NOTE] AS [NOTE]
+    FROM [dbo].[TB_GUESTS] AS [TB_GUESTS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="PK_CTDH_GIAODICH" Association="Self.PK_CTDH_GIAODICH">
+      <End Role="TB_DONDATHANG" EntitySet="TB_DONDATHANG" />
+      <End Role="TB_CTDH" EntitySet="TB_CTDH" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CTDH_SanPham" Association="Self.PK_CTDH_SanPham">
+      <End Role="TB_SanPham" EntitySet="TB_SanPham" />
+      <End Role="TB_CTDH" EntitySet="TB_CTDH" />
+    </AssociationSet>
+    <AssociationSet Name="PK_SanPham_Category" Association="Self.PK_SanPham_Category">
+      <End Role="TB_Category" EntitySet="TB_Category" />
+      <End Role="TB_SanPham" EntitySet="TB_SanPham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

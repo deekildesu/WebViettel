@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_PRODUCTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TB_Category">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Loaihang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TB_SanPham" Relationship="Self.PK_SanPham_Category" FromRole="TB_Category" ToRole="TB_SanPham" />
+  </EntityType>
+  <EntityType Name="TB_CTDH">
+    <Key>
+      <PropertyRef Name="MACTDH" />
+      <PropertyRef Name="MA_SP" />
+    </Key>
+    <Property Name="MACTDH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MA_GD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MA_SP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SO_LUONG" Type="Int32" Nullable="false" />
+    <Property Name="DON_GIA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_DONDATHANG" Relationship="Self.PK_CTDH_GIAODICH" FromRole="TB_CTDH" ToRole="TB_DONDATHANG" />
+    <NavigationProperty Name="TB_SanPham" Relationship="Self.PK_CTDH_SanPham" FromRole="TB_CTDH" ToRole="TB_SanPham" />
+  </EntityType>
+  <EntityType Name="TB_DONDATHANG">
+    <Key>
+      <PropertyRef Name="MADON" />
+    </Key>
+    <Property Name="MADON" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEN_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USER_PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AMOUNT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MESSEAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TB_CTDH" Relationship="Self.PK_CTDH_GIAODICH" FromRole="TB_DONDATHANG" ToRole="TB_CTDH" />
+  </EntityType>
+  <EntityType Name="TB_SanPham">
+    <Key>
+      <PropertyRef Name="MA_SPHAM" />
+    </Key>
+    <Property Name="MA_SPHAM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_SP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DT_DEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DT_PIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CONG_SUAT_DEN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SL_CHIPLEAD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CONG_SUAT_PIN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DUNG_LUONG_PIN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LIGHT_RANGE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LIGHT_TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRIDE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_Category" Relationship="Self.PK_SanPham_Category" FromRole="TB_SanPham" ToRole="TB_Category" />
+    <NavigationProperty Name="TB_CTDH" Relationship="Self.PK_CTDH_SanPham" FromRole="TB_SanPham" ToRole="TB_CTDH" />
+  </EntityType>
+  <EntityType Name="TB_GUESTS">
+    <Key>
+      <PropertyRef Name="TEN_KH" />
+      <PropertyRef Name="DIACHI" />
+      <PropertyRef Name="NOTE" />
+    </Key>
+    <Property Name="TEN_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="PK_SanPham_Category">
+    <End Role="TB_Category" Type="Self.TB_Category" Multiplicity="1" />
+    <End Role="TB_SanPham" Type="Self.TB_SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Category">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="TB_SanPham">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CTDH_GIAODICH">
+    <End Role="TB_DONDATHANG" Type="Self.TB_DONDATHANG" Multiplicity="1" />
+    <End Role="TB_CTDH" Type="Self.TB_CTDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_DONDATHANG">
+        <PropertyRef Name="MADON" />
+      </Principal>
+      <Dependent Role="TB_CTDH">
+        <PropertyRef Name="MA_GD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CTDH_SanPham">
+    <End Role="TB_SanPham" Type="Self.TB_SanPham" Multiplicity="1" />
+    <End Role="TB_CTDH" Type="Self.TB_CTDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_SanPham">
+        <PropertyRef Name="MA_SPHAM" />
+      </Principal>
+      <Dependent Role="TB_CTDH">
+        <PropertyRef Name="MA_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_PRODUCTSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TB_Category" EntityType="Self.TB_Category" />
+    <EntitySet Name="TB_CTDH" EntityType="Self.TB_CTDH" />
+    <EntitySet Name="TB_DONDATHANG" EntityType="Self.TB_DONDATHANG" />
+    <EntitySet Name="TB_SanPham" EntityType="Self.TB_SanPham" />
+    <EntitySet Name="TB_GUESTS" EntityType="Self.TB_GUESTS" />
+    <AssociationSet Name="PK_SanPham_Category" Association="Self.PK_SanPham_Category">
+      <End Role="TB_Category" EntitySet="TB_Category" />
+      <End Role="TB_SanPham" EntitySet="TB_SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CTDH_GIAODICH" Association="Self.PK_CTDH_GIAODICH">
+      <End Role="TB_DONDATHANG" EntitySet="TB_DONDATHANG" />
+      <End Role="TB_CTDH" EntitySet="TB_CTDH" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CTDH_SanPham" Association="Self.PK_CTDH_SanPham">
+      <End Role="TB_SanPham" EntitySet="TB_SanPham" />
+      <End Role="TB_CTDH" EntitySet="TB_CTDH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

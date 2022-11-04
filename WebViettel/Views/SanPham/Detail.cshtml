@@ -1,0 +1,226 @@
+﻿@using WebViettel.Models
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+    string masp = ViewBag.masp;//laay ma san pham tu control
+}
+<div class="container">
+    @{
+        CommonInfo x = (CommonInfo)HttpContext.Current.Application["dungChung"];
+    }
+    <div class="row">
+        @foreach (TB_SanPham i in x.sp)
+        {
+            if (i.MA_SPHAM == masp)
+            {
+                <div class="col-md-6">
+                    <div style="text-align:center">
+                        <img img src="~/Public/img/@i.Hinh" class="card-img-top " alt="@i.Ten_SP" style="height: 300px; width: 300px;" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>@i.Ten_SP</h2>
+                    <!-- Add icon library -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                    <span class="fa fa-star checked" style="color:orange;"></span>
+                    <span class="fa fa-star checked" style="color:orange;"></span>
+                    <span class="fa fa-star checked" style="color:orange;"></span>
+                    <span class="fa fa-star checked" style="color:orange;"></span>
+                    <span class="fa fa-star"></span>
+                    <hr />
+                    <ul style="list-style-type:none">
+                        <li><h3>Tên sản phẩm: @i.Ten_SP</h3></li>
+                        <li><h3>Diện tích đèn: @i.DT_DEN</h3></li>
+                        <li><h3>Diện tích pin: @i.DT_PIN</h3></li>
+                        <li><h3>Công suất đèn: @i.CONG_SUAT_DEN</h3></li>
+                        <li><h3>Công suất tấm pin: @i.CONG_SUAT_PIN</h3></li>
+                        <li><h3>Số lượng đèn chip: @i.SL_CHIPLEAD</h3></li>
+                        <li><h3>Dung lượng pin: @i.DUNG_LUONG_PIN</h3></li>
+                        <li><h3>Phạm vi chiếu sáng: @i.LIGHT_RANGE</h3></li>
+                        <li><h3>Thời gian chiếu sáng: @i.LIGHT_TIME</h3></li>
+                        <li><h3>Giá bán : @i.PRIDE VND</h3> </li>
+                    </ul>
+
+                    <div>
+                        @Html.ActionLink("Buy", "Buy", "ShoppingCart", new { id = i.MA_SPHAM }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>
+<hr />
+<h1 style="">
+    Những ưu điểm của các sản phẩm đèn năng lượng mặt trời&nbsp;60W&nbsp;Solar Light TOPSOLAR so với đèn điện thông thường
+</h1>
+<div class="Infomation" style="margin-left:50px">
+    <p>
+        <span style="box-sizing: border-box; color: rgb(0, 0, 255);"><span style="box-sizing: border-box; font-size: 14px;">- Không tốn tiền điện hàng tháng trong suốt thời gian sử dụng.</span></span>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-size: 15px;">
+        <span style="box-sizing: border-box; color: rgb(0, 0, 255);"><span style="box-sizing: border-box; font-size: 14px;">- Độ bền cao lên đến 10 năm.</span></span>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-size: 15px;">
+        <span style="box-sizing: border-box; color: rgb(0, 0, 255);"><span style="box-sizing: border-box; font-size: 14px;">- Không sử dụng dây điện rườm rà không sợ đứt dây điện và an toàn tuyệt đối về điện khi trời mưa bão.</span></span>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-size: 15px;">
+        <span style="box-sizing: border-box; color: rgb(0, 0, 255);"><span style="box-sizing: border-box; font-size: 14px;">- Tự động bật sáng khi trời tối - Tự động tắt khi trời sáng không phải để ý đến&nbsp; thời gian tắt mở hằng ngày.</span></span>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-size: 15px;">
+        <span style="box-sizing: border-box; color: rgb(0, 0, 255);"><span style="box-sizing: border-box; font-size: 14px;">- Lắp đặt cho tắt cả các vị trí trong nhà , hành lang, sân nhà , đường đi , nhà xưởng , trang trại và những khu vực không có điện lưới ...</span></span>
+    </p>
+    <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-size: 15px;">
+        <span style="box-sizing: border-box; color: rgb(255, 0, 0);"><strong style="box-sizing: border-box;">Liên Hệ Mua Hàng :&nbsp;</strong></span><strong style="box-sizing: border-box;"><span style="box-sizing: border-box; color: rgb(0, 0, 205); font-size: 14px;">09xxxxxxx5&nbsp;</span></strong>
+    </p>
+</div>
+<h2 style="text-align:center"> Thông số kỹ thuật của đèn năng lượng mặt trời</h2>
+<table class="table" style="border-collapse: collapse; width: 100%; border-spacing: 0; margin-left: 50px; margin-right:50px">
+    <tbody>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Công suất
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                60W - Đồng hồ hiển thị báo pin.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Tấm Pin
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Polysilicon 6V
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Pin
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Lithium ion Lifepo4 - 3.2V / 180000mAh
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Sử dụng chip LED
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                132pcs SMD5730 - Tuổi thọ 50.000 giờ
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Ánh sáng
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Trắng - Góc chiếu sáng 160 độ
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Chất liệu
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Nhôm đúc nguyên khối + kính cường lực
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Tiêu chuẩn chống nước
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                IP67
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Cảm biến ánh sáng
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Tối tự sáng - sáng tự tắt
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Điều khiển Remot từ xa
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Tắt/ mở -&nbsp; hẹn giờ - tăng giảm độ sáng
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Thời gian sạc
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                5 giờ
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Thời gian chiếu sáng
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                &gt; 12&nbsp; giờ
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Bảo hành
+            </td>
+            <td>
+                24 tháng. 1 đổi 1 trong năm đầu tiên
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Giao hàng
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                Toàn quốc
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; border: 1px solid;">
+                <strong>⭐&nbsp;</strong>Thời gian giao hàng
+            </td>
+            <td style="padding: 5px; border: 1px solid;">
+                1-2 ngày
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 style="font-size: 30px; padding-left:30px">
+    <strong>Hướng dẫn lắp đặt đèn năng lượng mặt trời 60W chính xác</strong>
+</h2>
+<p style="padding-left:30px">
+    Việc lắp đặt đèn năng lượng mặt trời chính xác sẽ giúp đèn hoạt động tốt, hấp thu đủ năng lượng để sử dụng và đảm bảo được độ bền của đèn hơn 10 năm.
+</p>
+<p style="padding-left:30px">
+    Đèn năng lượng mặt trời 60W có thể được lắp đặt trên tường hoặc trên những cột trụ tuỳ vào nhu cầu sử dụng của khách hàng.
+</p>
+<p style="padding-left:30px">
+    Dưới đây là từng bước đơn giản lắp đặt đèn năng lượng mặt trời 60W, quý khách hàng có thể làm theo dễ dàng
+</p>
+<div style="padding-left: 28%;">
+    <img  class="alert-info" src="~/Public/img/Lapdat.jpg" />
+ </div>
+<hr class="new1">
+<div class="container">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Nội Dung</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+    </div>
+    <div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2" type="button">Gửi</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Public/css/all.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/LayoutSite.css" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <section class="header">
+        <div class="container header__wrapper" style="text-align: center">
+            <div class="row header__inner">
+                <div class="col-md-3 mt-3">
+                    <a>Điện mặt trời và nhà thông minh </a>
+                    <a style="margin-left:50px">Viettel Kiên Giang</a>
+                </div>
+                <div class="col-md-5  mt-3">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search here" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <a class="btn btn-info bg-info input-group-text" id="basic-addon2">Search</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-2">
+                    <div class="cart-header pt-2">
+                        <a class="cart-icon" href="shopping-cart">GIỎ HÀNG<i class="fas fa-cart-plus" style="font-size:30px"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-menu bg-info">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-info">
+                <a class="navbar-brand" href="#">Giới Thiệu</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Đèn pha năng lượng mặt trời", "Sanpham1", "SanPham", null, new { @class = "nav-link" })
+
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Đèn đường năng lượng mặt trời", "Sanpham2", "SanPham", null, new { @class = "nav-link" })
+                            
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                BLOG
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">CHỌN THEO NHU CẦU</a>
+                                <a class="dropdown-item" href="#">NHIỀU NGƯỜI QUAN TÂM</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lien-he">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <section class="main-content">
+        @RenderBody()
+    </section>
+    <div>
+        <a href="https://zalo.me/0982600008" class="float">
+            <i class="fa my-float">Zalo</i>
+        </a>
+        </div>
+    <section class="footer mt-3 " style="background: #444444">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h3>About shop</h3>
+                    <ul>
+                        <li><p href="#" style="color:white">Hotline bán hàng: 0945309649 (hoặc Zalo)</p></li>
+                        <li><p href="#" style="color:white">Địa chỉ: Lô 1 căn 6 Phan Thị Ràng, Rạch Giá, Kiên Giang</p></li>
+                        <li><p href="#" style="color:white">Thời gian hoạt động: 8h30 – 12h00; 13h30 – 18h00 (T2 – CN)</p></li>
+                        <li><p href="#" style="color:white">Ngoài giờ nhận ship, vui lòng liên hệ qua hotline hoặc Zalo</p></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Hỗ trợ khách hàng</h3>
+                    <ul>
+                        <li><a href="#" style="color:white">Phương thức thanh toán</a></li>
+                        <li><a href="#" style="color:white">Phương thức vận chuyển</a></li>
+                        <li><a href="#" style="color:white">Chính sách đổi trả-Bảo hành</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Dịch vụ</h3>
+                    <ul>
+                        <li><a href="#" style="color:white">Hình thức lắp đặt</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copy-right bg-danger py-2">
+        <div class="container text-center">Thiết kế bởi Quách Nhất Duy</div>
+    </section>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

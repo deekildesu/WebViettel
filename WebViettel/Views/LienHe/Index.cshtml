@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="container my-4">
+    <h1 class="text-center">Liên hệ</h1>
+    <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label><strong>Họ và tên (<span class="text-danger">*</span>)</strong></label>
+                <input name="fullname" placeholder="VD: Nguyễn Văn A" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label><strong>Số Điện Thoại (<span class="text-danger">*</span>)</strong></label>
+                <input name="sdt" placeholder="VD: 9 chữ số không dấu câu hay dấu cách" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label><strong>Email (<span class="text-danger">*</span>)</strong></label>
+                <input name="email" placeholder="VD: NguyenVanA@gmail.com" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label><strong>Tiêu đề (<span class="text-danger">*</span>)</strong></label>
+                <input name="Tieude" placeholder="Hỏi giá sỉ?" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label><strong>Nội dung (<span class="text-danger">*</span>)</strong></label>
+                <textarea name="NoiDung" placeholder="Điền nội dung" type="text" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success">Gửi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
